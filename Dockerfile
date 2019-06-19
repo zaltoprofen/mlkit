@@ -24,12 +24,11 @@ RUN apt-get update \
 ENV MKL_ROOT_DIR /opt/intel/mkl
 ENV LD_LIBRARY_PATH $MKL_ROOT_DIR/lib/intel64
 
-ARG N_PROC=2
 RUN mkdir -p /src/python \
     && cd /src/python \
     && wget -qO- https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz | tar xzf - --strip-components=1 \
     && ./configure \
-    && make -j${N_PROC} \
+    && make -j$(nproc) \
     && make install \
     && cd .. && rm -rf /src/python
 
