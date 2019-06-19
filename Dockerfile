@@ -16,7 +16,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         intel-mkl.${MKL_VERSION} \
-        libcairo2-dev libeigen3-dev libssl-dev libffi-dev libsqlite3-dev \
+        libssl-dev libffi-dev libsqlite3-dev \
         gfortran \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
